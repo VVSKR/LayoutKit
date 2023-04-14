@@ -32,36 +32,43 @@ let package = Package(
     targets: [
         .target(
             name: "LayoutKit",
-            dependencies: ["GeometryTools", "LayoutExpressions"]
+            dependencies: ["GeometryTools", "LayoutExpressions"],
+            path: "Sources/LayoutKit"
         ),
         .target(
             name: "GeometryTools",
-            dependencies: []
+            dependencies: [],
+            path: "Sources/GeometryTools"
         ),
         .target(
             name: "LayoutExpressions",
-            dependencies: ["GeometryTools"]
+            dependencies: ["GeometryTools"],
+            path: "Sources/LayoutExpressions"
         ),
         .target(
             name: "CommonCore",
             dependencies: ["LayoutKit"],
-            path: "Sources"
+            path: "Sources/CommonCore"
         ),
         .testTarget(
             name: "LayoutKitTests",
-            dependencies: ["LayoutKit"]
+            dependencies: ["LayoutKit"],
+            path: "Tests/LayoutKitTests"
         ),
         .testTarget(
             name: "GeometryToolsTests",
-            dependencies: ["GeometryTools"]
+            dependencies: ["GeometryTools"],
+            path: "Tests/GeometryToolsTests"
         ),
         .testTarget(
             name: "LayoutExpressionsTests",
-            dependencies: ["LayoutExpressions"]
+            dependencies: ["LayoutExpressions"],
+            path: "Tests/LayoutExpressionsTests"
         ),
         .testTarget(
             name: "CommonCoreTests",
-            dependencies: ["CommonCore"]
+            dependencies: ["CommonCore"],
+            path: "Tests/CommonCoreTests"
         )
     ]
 )
