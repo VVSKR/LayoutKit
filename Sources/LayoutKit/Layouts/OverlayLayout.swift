@@ -79,7 +79,7 @@ extension OverlayLayout: ConfigurableLayout {
     /**
      Measure all layouts and return the layout measurement with the size of the primary layout.
      */
-    open func measurement(within maxSize: CGSize) -> LayoutMeasurement {
+    public func measurement(within maxSize: CGSize) -> LayoutMeasurement {
         let measuredPrimaryLayouts = primary.map { $0.measurement(within: maxSize)}
         let maxWidth = measuredPrimaryLayouts.map { $0.size.width }.max() ?? 0
         let maxHeight = measuredPrimaryLayouts.map { $0.size.height }.max() ?? 0
@@ -97,7 +97,7 @@ extension OverlayLayout: ConfigurableLayout {
      (primary, background and overlay) inside the rect created from the alignment's position in
      the measurement's size.
      */
-    open func arrangement(within rect: CGRect, measurement: LayoutMeasurement) -> LayoutArrangement {
+    public func arrangement(within rect: CGRect, measurement: LayoutMeasurement) -> LayoutArrangement {
         // We arrange the background and overlay layouts based on the rect of the sublayout
         let frame = alignment.position(size: measurement.size, in: rect)
         let sublayoutRect = CGRect(origin: CGPoint.zero, size: frame.size)
