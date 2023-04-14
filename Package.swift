@@ -18,57 +18,34 @@ import PackageDescription
 //     swiftLanguageVersions: [.v5]
 // )
 
+// swift-tools-version:5.4
+
+import PackageDescription
+
 let package = Package(
     name: "LayoutKit",
     platforms: [
-        .iOS(.v9)
+        .iOS(.v11),
+        .tvOS(.v11),
+        .watchOS(.v4),
+        .macOS(.v10_12)
     ],
     products: [
-        .library(name: "LayoutKit", targets: ["LayoutKit"]),
-        .library(name: "GeometryTools", targets: ["GeometryTools"]),
-        .library(name: "LayoutExpressions", targets: ["LayoutExpressions"]),
-        .library(name: "CommonCore", targets: ["CommonCore"])
+        .library(
+            name: "LayoutKit",
+            targets: ["LayoutKit"]
+        )
     ],
     targets: [
         .target(
             name: "LayoutKit",
-            dependencies: ["GeometryTools", "LayoutExpressions"],
-            path: "Sources/LayoutKit"
-        ),
-        .target(
-            name: "GeometryTools",
             dependencies: [],
-            path: "Sources/GeometryTools"
-        ),
-        .target(
-            name: "LayoutExpressions",
-            dependencies: ["GeometryTools"],
-            path: "Sources/LayoutExpressions"
-        ),
-        .target(
-            name: "CommonCore",
-            dependencies: ["LayoutKit"],
-            path: "Sources/CommonCore"
+            path: "Sources"
         ),
         .testTarget(
             name: "LayoutKitTests",
             dependencies: ["LayoutKit"],
-            path: "Tests/LayoutKitTests"
-        ),
-        .testTarget(
-            name: "GeometryToolsTests",
-            dependencies: ["GeometryTools"],
-            path: "Tests/GeometryToolsTests"
-        ),
-        .testTarget(
-            name: "LayoutExpressionsTests",
-            dependencies: ["LayoutExpressions"],
-            path: "Tests/LayoutExpressionsTests"
-        ),
-        .testTarget(
-            name: "CommonCoreTests",
-            dependencies: ["CommonCore"],
-            path: "Tests/CommonCoreTests"
+            path: "Tests"
         )
     ]
 )
